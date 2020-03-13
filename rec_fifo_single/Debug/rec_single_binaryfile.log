@@ -1,0 +1,34 @@
+﻿生成启动时间为 2020/1/31 20:51:31。
+     1>项目“C:\Users\lenovo\Desktop\数据采集卡新\数据采集卡新\新建文件夹\Examples\c_cpp\rec_fifo_single\rec_single_binaryfile.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (.\Debug\) contains files shared from another project (rec_fifo_single_poll.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         D:\Program Files\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug\\" /Fd".\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\common\ostools\spcm_ostools_win.cpp ..\common\spcm_lib_card.cpp ..\common\spcm_lib_data.cpp rec_single_binaryfile.cpp
+         rec_single_binaryfile.cpp
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\rec_fifo_single\rec_single_binaryfile.cpp(165): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\rec_fifo_single\rec_single_binaryfile.cpp(171): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\rec_fifo_single\rec_single_binaryfile.cpp(173): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\rec_fifo_single\rec_single_binaryfile.cpp(182): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(211) : 参见“fopen”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\rec_fifo_single\rec_single_binaryfile.cpp(222): warning C4244: “参数”: 从“__int64”转换到“size_t”，可能丢失数据
+         正在生成代码...
+         正在跳过...(未检测到相关更改)
+         spcm_lib_data.cpp
+         spcm_lib_card.cpp
+         spcm_ostools_win.cpp
+       Link:
+         D:\Program Files\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug\rec_single_binaryfile.exe" /INCREMENTAL /NOLOGO odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug\rec_single_binaryfile.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\rec_single_binaryfile.lib" /MACHINE:X86 /SAFESEH .\Debug\spcm_ostools_win.obj
+         .\Debug\spcm_lib_card.obj
+         .\Debug\spcm_lib_data.obj
+         .\Debug\spcm_lib_thread.obj
+         .\Debug\sb5_file.obj
+         .\Debug\rec_single_binaryfile.obj
+         ..\c_header\spcm_win32_msvcpp.lib
+         rec_single_binaryfile.vcxproj -> C:\Users\lenovo\Desktop\数据采集卡新\数据采集卡新\新建文件夹\Examples\c_cpp\rec_fifo_single\.\Debug\rec_single_binaryfile.exe
+     1>已完成生成项目“C:\Users\lenovo\Desktop\数据采集卡新\数据采集卡新\新建文件夹\Examples\c_cpp\rec_fifo_single\rec_single_binaryfile.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:07.40

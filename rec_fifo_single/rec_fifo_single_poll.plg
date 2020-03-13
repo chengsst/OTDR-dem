@@ -1,0 +1,43 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: rec_fifo_single_poll - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\chengsst\AppData\Local\Temp\RSPC3F4.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/rec_fifo_single_poll.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Users\chengsst\Desktop\数据采集卡新\新建文件夹\Examples\c_cpp\common\spcm_lib_data.cpp"
+"C:\Users\chengsst\Desktop\数据采集卡新\新建文件夹\Examples\c_cpp\common\ostools\spcm_ostools_win.cpp"
+]
+Creating command line "cl.exe @C:\Users\chengsst\AppData\Local\Temp\RSPC3F4.tmp" 
+Creating temporary file "C:\Users\chengsst\AppData\Local\Temp\RSPC3F5.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/rec_fifo_single_poll.pdb" /debug /machine:I386 /out:"Debug/rec_fifo_single_poll.exe" /pdbtype:sept 
+".\Debug\spcm_lib_card.obj"
+".\Debug\spcm_lib_data.obj"
+".\Debug\spcm_ostools_win.obj"
+".\Debug\rec_fifo_single_poll.obj"
+"..\c_header\spcm_win32_msvcpp.lib"
+]
+Creating command line "link.exe @C:\Users\chengsst\AppData\Local\Temp\RSPC3F5.tmp"
+<h3>Output Window</h3>
+Compiling...
+spcm_lib_data.cpp
+spcm_ostools_win.cpp
+c:\users\chengsst\desktop\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_data.cpp(593) : error C2520: conversion from unsigned __int64 to double not implemented, use signed __int64
+c:\users\chengsst\desktop\数据采集卡新\新建文件夹\examples\c_cpp\common\ostools\spcm_ostools_win.cpp(213) : error C2065: '_aligned_malloc' : undeclared identifier
+c:\users\chengsst\desktop\数据采集卡新\新建文件夹\examples\c_cpp\common\ostools\spcm_ostools_win.cpp(213) : error C2440: 'initializing' : cannot convert from 'int' to 'void *'
+        Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
+c:\users\chengsst\desktop\数据采集卡新\新建文件夹\examples\c_cpp\common\ostools\spcm_ostools_win.cpp(230) : error C2065: '_aligned_free' : undeclared identifier
+执行 cl.exe 时出错.
+
+
+
+<h3>Results</h3>
+rec_fifo_single_poll.exe - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

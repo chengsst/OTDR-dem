@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{14100976-8d11-4c4f-b593-36b7122ef4cb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common\spcm_lib_card.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\spcm_lib_data.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\spcm_lib_thread.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\ostools\spcm_ostools_win.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="rec_single_average.cpp" />
+    <ClCompile Include="IQdm.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\c_header\spcm_win32_msvcpp.lib">
+      <Filter>common</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\sb5_file\sb5_file.h" />
+  </ItemGroup>
+</Project>

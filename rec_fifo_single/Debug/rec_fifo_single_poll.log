@@ -1,0 +1,106 @@
+﻿生成启动时间为 2020/1/31 16:05:45。
+     1>项目“C:\Users\lenovo\Desktop\数据采集卡新\数据采集卡新\新建文件夹\Examples\c_cpp\rec_fifo_single\rec_fifo_single_poll.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\Program Files\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug\\" /Fd".\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\common\ostools\spcm_ostools_win.cpp ..\common\spcm_lib_card.cpp ..\common\spcm_lib_data.cpp rec_fifo_single_poll.cpp
+         rec_fifo_single_poll.cpp
+         spcm_lib_data.cpp
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_data.cpp(205): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_data.cpp(469): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\string.h(112) : 参见“strcpy”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_data.cpp(475): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_data.cpp(476): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_data.cpp(477): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_data.cpp(480): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\string.h(112) : 参见“strcpy”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_data.cpp(577): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_data.cpp(639): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+         spcm_lib_card.cpp
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(66): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(76): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(353): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(354): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(355): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(356): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(357): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(358): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(359): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(405): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(406): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(407): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(408): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(409): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(410): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(411): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(412): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(419): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(421): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(423): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(425): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(427): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(463): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(464): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(466): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(467): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(548): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(932): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(1475): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(1570): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(1604): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(1642): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(1762): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>c:\users\lenovo\desktop\数据采集卡新\数据采集卡新\新建文件夹\examples\c_cpp\common\spcm_lib_card.cpp(1779): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files\vc\include\stdio.h(356) : 参见“sprintf”的声明
+         spcm_ostools_win.cpp
+         正在生成代码...
+       Link:
+         D:\Program Files\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug\rec_fifo_single_poll.exe" /INCREMENTAL /NOLOGO odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug\rec_fifo_single_poll.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\rec_fifo_single_poll.lib" /MACHINE:X86 /SAFESEH .\Debug\spcm_ostools_win.obj
+         .\Debug\spcm_lib_card.obj
+         .\Debug\spcm_lib_data.obj
+         .\Debug\rec_fifo_single_poll.obj
+         ..\c_header\spcm_win32_msvcpp.lib
+     1>spcm_ostools_win.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+         rec_fifo_single_poll.vcxproj -> C:\Users\lenovo\Desktop\数据采集卡新\数据采集卡新\新建文件夹\Examples\c_cpp\rec_fifo_single\.\Debug\rec_fifo_single_poll.exe
+     1>已完成生成项目“C:\Users\lenovo\Desktop\数据采集卡新\数据采集卡新\新建文件夹\Examples\c_cpp\rec_fifo_single\rec_fifo_single_poll.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:13.18
