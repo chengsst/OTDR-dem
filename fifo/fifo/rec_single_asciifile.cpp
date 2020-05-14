@@ -44,7 +44,7 @@ https://www.spectrum-instrumentation.com/en/knowledge-base-overview
 #include <ctime>
 #include <windows.h>
 #include <time.h>
-
+#include <fstream>
 
 
 // ----- IQdem need
@@ -67,16 +67,17 @@ https://www.spectrum-instrumentation.com/en/knowledge-base-overview
 bool g_bThread = false;
 
 
-int row = 50;
-int col = 24332;
+int row = 30;
+int col = 16170;//24333:5km
 int64 sample_v;
-int pulse_fec = 10000;
+int pulse_fec = 5000;
 int AOM_fec = 80e6;
 double data_t[maxcol];
 double data[maxcol];
 double *var_value = new double[maxcol];
 double *location = new double[maxcol];
 char    sendBuf[100];
+int		num = 0;
 
 typedef enum E_FILETYPE { eFT_noWrite, eFT_PlainBinary, eFT_PlainWithTimestamps, eFT_SB5_Stream } E_FILETYPE;
 
@@ -123,6 +124,37 @@ void datatrans(
 	{
 		data_t[j] = *pTData;
 	}
+}
+/*
+**************************************************************************
+rdata:read data
+**************************************************************************
+*/
+template <class T>
+bool rdata(
+	ST_SPCM_CARDINFO *pstCardInfo, // pointer to a filled card info structure
+	void *pvMuxData,               // pointer to the muxed data
+	uint32 dwLenInSamples,         // length ot muxed data in samples
+	T **ppTChannelData)            // generic array of pointers for demuxed data
+{
+	uint32  dwSample;
+	int32   lCh;
+	T*      ppTChPtr[SPCM_MAX_AICHANNEL];
+
+	if (!pstCardInfo || !pvMuxData)
+		return false;
+
+	// set the sorting table for the channels
+	for (lCh = 0; lCh < pstCardInfo->lSetChannels; lCh++)
+		ppTChPtr[lCh] = ppTChannelData[lCh];
+
+	// split data
+	T* pTMuxBuf = (T*)pvMuxData;
+
+	for (dwSample = 0; dwSample < dwLenInSamples; dwSample++)
+		*ppTChPtr[0]++ = *pTMuxBuf++;
+
+	return true;
 }
 /*
 **************************************************************************
@@ -183,7 +215,7 @@ bool bDoCardSetup(ST_WORKDATA* pstWorkData, ST_BUFFERDATA* pstBufferData)
 
 
 	// FIFO mode setup, we run continuously and use 16 samples of pretrigger for each segment
-	pstWorkData->lSegmentsize = KILO_B(64);          // segment size
+	pstWorkData->lSegmentsize = MEGA_B(4);          // segment size
 	pstWorkData->eFileType = eFT_PlainWithTimestamps;        // storage mode
 
 
@@ -365,7 +397,7 @@ bool bWorkDo(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 	int32 lChannels = pstBufferData->pstCard->lSetChannels;
 	int32 lSamples = pstBufferData->dwDataNotify / pstBufferData->pstCard->lBytesPerSample;
 	FILE* f = pstWorkData->hFile;
-	int32			lIndex, i, j;
+	int32			lIndex, i, j, T;
 	double			dAverage;
 	uint32          dwTimestampBytes;
 	double			threshold = 1.0;
@@ -388,26 +420,29 @@ bool bWorkDo(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 		pstBufferData->llDataAvailBytes = pstBufferData->dwDataNotify;
 
 	// now let's split up the data
-	bSpcMDemuxAnalogData(pstBufferData->pstCard, pstBufferData->pvDataCurrentBuf, pstWorkData->lNotifySamplesPerChannel, pstWorkData->ppnChannelData);
+	//bSpcMDemuxAnalogData(pstBufferData->pstCard, pstBufferData->pvDataCurrentBuf, pstWorkData->lNotifySamplesPerChannel, pstWorkData->ppnChannelData);
 
-	datatrans(pstWorkData->ppnChannelData[0], pstWorkData->lNotifySamplesPerChannel);
+	//datatrans(pstWorkData->ppnChannelData[0], pstWorkData->lNotifySamplesPerChannel);
+
+	int16* pnData = (int16*)pstBufferData->pvDataCurrentBuf;
 
 
 
-	for (lIndex = 0; lIndex < row*col; lIndex++)
+	T = KILO(100);
+
+	lIndex = 0;
+	for (j = 0; j < row; j++)
 	{
-		for (j = 0; j < row; j++)
+		for (i = 1288; i <col + 1288; i++)
 		{
-			for (i = 1300; i <col + 1300; i++)
-			{
-				data[lIndex] = 50 * dSpcMIntToVoltage(pstBufferData->pstCard, 0, data_t[j*pstWorkData->lSegmentsize + i]);
-				lIndex++;
-			}
+			data[lIndex] = 50 * dSpcMIntToVoltage(pstBufferData->pstCard, 0, pnData[j*T + i]);
+			lIndex++;
 		}
 	}
 
-	mIQdem();
 
+	mIQdem();
+	//std::ofstream file_writer(FILENAME, std::ios_base::out);
 
 
 	//输出所有location并且进行扰动定位
@@ -427,14 +462,17 @@ bool bWorkDo(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 			send(pstWorkData->socketClient, sendBuf, 100, 0);
 
 		}
-		fprintf(f, "%9.2f   %9.2f  \n ", location[lIndex], 100 * var_value[lIndex]);
+		if (num<5)
+			fprintf(f, "%9.2f   %9.2f  \n ", location[lIndex], 100 * var_value[lIndex]);
 	}
 
+	num++;
 
 	// calculate average of first channel
 	//dAverage = dSpcMCalcAverage(pstWorkData->ppnChannelData[0], pstWorkData->lNotifySamplesPerChannel);
 	//dAverage = dSpcMIntToVoltage(pstBufferData->pstCard, 0, dAverage);
 
+	// ----- data together with timestamps -----
 
 	// announce the number of data that has been written
 	/*printf(
