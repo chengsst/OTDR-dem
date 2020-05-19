@@ -77,13 +77,25 @@ double data[maxcol];
 double *var_value = new double[maxcol];
 double *location = new double[maxcol];
 char    sendBuf[100];
-int		num = 0;
+uint64		num = 0;
 
 typedef enum E_FILETYPE { eFT_noWrite, eFT_PlainBinary, eFT_PlainWithTimestamps, eFT_SB5_Stream } E_FILETYPE;
 
 #define FILENAME "location_test.txt"
 
-
+/*
+**************************************************************************
+Rand
+**************************************************************************
+*/
+double getRandData(int min, int max)
+{
+	double m1 = (double)(rand() % 101) / 101;
+	min++;
+	double m2 = (double)((rand() % (max - min + 1)) + min);
+	m2 = m2 - 1;
+	return m1 + m2;
+}
 
 /*
 **************************************************************************
@@ -167,7 +179,7 @@ void mIQdem()
 
 
 	//*********声明IQdem输入
-	mwArray data_in(row, col, mxDOUBLE_CLASS);//按列读入数据
+	mwArray data_in(col, row, mxDOUBLE_CLASS);//按列读入数据
 	mwArray data_row(1, 1, mxDOUBLE_CLASS);
 	mwArray data_col(1, 1, mxDOUBLE_CLASS);
 	mwArray sample_rate(1, 1, mxDOUBLE_CLASS);
@@ -191,7 +203,7 @@ void mIQdem()
 
 
 	//*********解调
-	IQdem(3, varmap, distance, capTime, data_row, data_col, data_in, sample_rate, impulse_frecncy);
+	IQdem(3, varmap, distance, capTime, data_row, data_col, data_in, sample_rate, impulse_frecncy, AOM_shift);
 
 
 	//*********解调数据存储
@@ -230,7 +242,7 @@ bool bDoCardSetup(ST_WORKDATA* pstWorkData, ST_BUFFERDATA* pstBufferData)
 	else if (pstBufferData->pstCard->bM2p)
 		bSpcMSetupClockPLL(pstBufferData->pstCard, MEGA(10), false);
 	else if (pstBufferData->pstCard->bM3i || pstBufferData->pstCard->bM4i)
-		bSpcMSetupClockPLL(pstBufferData->pstCard, MEGA(500), false);
+		bSpcMSetupClockPLL(pstBufferData->pstCard, MEGA(400), false);
 	printf("Sampling rate set to %.1lf MHz\n", (double)pstBufferData->pstCard->llSetSamplerate / 1000000);
 
 
@@ -303,9 +315,9 @@ bool bDoCardSetup(ST_WORKDATA* pstWorkData, ST_BUFFERDATA* pstBufferData)
 	//2.创建套接字
 	pstWorkData->socketClient = socket(AF_INET, SOCK_STREAM, 0);
 	SOCKADDR_IN socketAddr;
-	socketAddr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1"); //需要接收的IP地址
+	socketAddr.sin_addr.S_un.S_addr = inet_addr("47.102.102.118"); //需要接收的IP地址
 	socketAddr.sin_family = AF_INET;
-	socketAddr.sin_port = htons(8081);//端口号
+	socketAddr.sin_port = htons(9995);//端口号
 
 	//3.连接套接字
 	connect(pstWorkData->socketClient, (SOCKADDR*)&socketAddr, sizeof(SOCKADDR));
@@ -328,7 +340,7 @@ bool bWorkInit(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 
 	// setup for the transfer, to avoid overrun we use quite large blocks as this has a better throughput to hard disk
 	pstBufferData->dwDataBufLen = MEGA_B(256);//1024*1024*m
-	pstBufferData->dwDataNotify = MEGA_B(16);
+	pstBufferData->dwDataNotify = MEGA_B(64);
 	pstBufferData->dwTSBufLen = MEGA_B(1);
 	pstBufferData->dwTSNotify = KILO_B(4);
 
@@ -397,10 +409,10 @@ bool bWorkDo(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 	int32 lChannels = pstBufferData->pstCard->lSetChannels;
 	int32 lSamples = pstBufferData->dwDataNotify / pstBufferData->pstCard->lBytesPerSample;
 	FILE* f = pstWorkData->hFile;
-	int32			lIndex, i, j, T;
+	int32			lIndex, i, j, T, n;
 	double			dAverage;
 	uint32          dwTimestampBytes;
-	double			threshold = 1.0;
+	double			threshold = 1.2;
 	//double		disturbance[maxcol];
 	time_t			now = time(0);
 	//char			*dt = ctime(&now);
@@ -417,7 +429,8 @@ bool bWorkDo(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 
 	// we only care for blocks of notify size
 	if (pstBufferData->llDataAvailBytes < pstBufferData->dwDataNotify)
-		pstBufferData->llDataAvailBytes = pstBufferData->dwDataNotify;
+		return true;
+	pstBufferData->llDataAvailBytes = pstBufferData->dwDataNotify;           //如果可读字节数小于通知大小，return true
 
 	// now let's split up the data
 	//bSpcMDemuxAnalogData(pstBufferData->pstCard, pstBufferData->pvDataCurrentBuf, pstWorkData->lNotifySamplesPerChannel, pstWorkData->ppnChannelData);
@@ -426,47 +439,65 @@ bool bWorkDo(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 
 	int16* pnData = (int16*)pstBufferData->pvDataCurrentBuf;
 
+	/*for (lIndex = 0; lIndex < MEGA(1); lIndex++)
+	{
+	if (num ==3||num==200)
+	{
+	data_t[lIndex] = 50 * dSpcMIntToVoltage(pstBufferData->pstCard, 0, pnData[lIndex]);
+	fprintf(f, "%9.2f , %d\n ", data_t[lIndex], lIndex);
+	}
 
+	}*/
 
 	T = KILO(100);
-
-	lIndex = 0;
-	for (j = 0; j < row; j++)
+	for (n = 0; n < T; n++)
 	{
-		for (i = 1288; i <col + 1288; i++)
+		data_t[n] = 50 * dSpcMIntToVoltage(pstBufferData->pstCard, 0, pnData[n]);
+		if (data_t[n]>10 || data_t[n] <-10)
 		{
-			data[lIndex] = 50 * dSpcMIntToVoltage(pstBufferData->pstCard, 0, pnData[j*T + i]);
-			lIndex++;
+			lIndex = 0;
+			for (j = 0; j < row; j++)
+			{
+				for (i = n + 100; i <col + n + 100; i++)
+				{
+					data[lIndex] = 50 * dSpcMIntToVoltage(pstBufferData->pstCard, 0, pnData[j*T + i]);
+					//if (num == 3 || num == 200)fprintf(f, "%9.2f , %d\n ", data[lIndex], lIndex);
+					lIndex++;
+				}
+			}
+			break;
 		}
 	}
 
 
+	printf("\n*************************");
 	mIQdem();
 	//std::ofstream file_writer(FILENAME, std::ios_base::out);
 
-
+	//double randnum = getRandData(35,45);
 	//输出所有location并且进行扰动定位
 	for (lIndex = 0; lIndex < col; lIndex++)
 	{
-		if (100 * var_value[lIndex]>threshold&&var_value[lIndex] > var_value[lIndex + 1] && var_value[lIndex] >= var_value[lIndex - 1])
+		if (100 * var_value[lIndex]>threshold&&var_value[lIndex] > var_value[lIndex + 1] && var_value[lIndex] >= var_value[lIndex - 1] && location[lIndex] <= 2600 && location[lIndex] > 30)
 		{
-			printf("\nFound disturbance: %9.2f m", location[lIndex]);
+			printf("\nFound disturbance: %9.2f m", location[lIndex]);//location[lIndex]
+			printf("\n*************************");
 			if (location[lIndex] < 100)i = 1;
 			else if (location[lIndex] < 500)i = 2;
 			else if (location[lIndex] < 1000)i = 3;
 			else if (location[lIndex] < 1500)i = 4;
 			else i = 5;
 
-			sprintf(sendBuf, "150900,内蒙古乌兰察布玫瑰营变电站，%d/%d/%d %d:%d:%d 防区%d", ltm->tm_year, ltm->tm_mon, ltm->tm_mday, ltm->tm_hour, ltm->tm_min, ltm->tm_sec, i);
+			sprintf(sendBuf, "150900,内蒙古乌兰察布玫瑰营变电站,%d/%d/%d %d:%d:%d,防区%d", ltm->tm_year + 1900, ltm->tm_mon + 1, ltm->tm_mday, ltm->tm_hour, ltm->tm_min, ltm->tm_sec, i);
 
 			send(pstWorkData->socketClient, sendBuf, 100, 0);
 
 		}
-		if (num<5)
-			fprintf(f, "%9.2f   %9.2f  \n ", location[lIndex], 100 * var_value[lIndex]);
+		//if (num<2)fprintf(f, "%9.2f   %9.2f  \n ", location[lIndex], 100 * var_value[lIndex]);
 	}
 
 	num++;
+
 
 	// calculate average of first channel
 	//dAverage = dSpcMCalcAverage(pstWorkData->ppnChannelData[0], pstWorkData->lNotifySamplesPerChannel);
@@ -485,7 +516,7 @@ bool bWorkDo(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 	//延时
 	//int clktime = 30 * 1000;
 	//clock_t now_clk = clock();
-	//while (clock() - now_clk < clktime);
+	//if (clock() - now_clk < clktime)
 
 	return true;
 }

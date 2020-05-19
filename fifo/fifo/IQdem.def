@@ -1,8 +1,0 @@
-LIBRARY IQdem
-EXPORTS
-IQdemInitialize
-IQdemInitializeWithHandlers
-IQdemTerminate
-IQdemPrintStackTrace
-mlxIQdem
-

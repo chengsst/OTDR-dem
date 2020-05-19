@@ -1,7 +1,9 @@
 //
 // MATLAB Compiler: 6.2 (R2016a)
-// Date: Thu Apr 09 12:35:44 2020
-// Arguments: "-B" "macro_default" "-W" "cpplib:IQdem" "-T" "link:lib" "IQdem" 
+// Date: Mon Apr 27 16:06:18 2020
+// Arguments: "-B" "macro_default" "-W" "cpplib:IQdem" "-T" "link:lib" "-d"
+// "C:\Users\aicter\Desktop\OTDR\IQDEM\IQdem\for_testing" "-v"
+// "C:\Users\aicter\Desktop\OTDR\IQDEM\IQdem.m" 
 //
 
 #ifndef __IQdem_h
@@ -105,7 +107,7 @@ bool MW_CALL_CONV mlxIQdem(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[])
 
 #endif
 
-extern LIB_IQdem_CPP_API void MW_CALL_CONV IQdem(int nargout, mwArray& varamp, mwArray& distance, mwArray& capTime, const mwArray& data_row, const mwArray& data_column, const mwArray& data, const mwArray& sample_rate, const mwArray& impulse_freq);
+extern LIB_IQdem_CPP_API void MW_CALL_CONV IQdem(int nargout, mwArray& varamp, mwArray& distance, mwArray& capTime, const mwArray& data_row, const mwArray& data_column, const mwArray& datain, const mwArray& sample_rate, const mwArray& impulse_freq, const mwArray& AOM_shift);
 
 #endif
 #endif
