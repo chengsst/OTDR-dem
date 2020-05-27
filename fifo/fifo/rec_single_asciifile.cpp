@@ -114,6 +114,7 @@ struct ST_WORKDATA
 	int32   lSegmentsize;
 	int64   llSamplesWritten;
 	SOCKET  socketClient;
+	int		iH, iM, iS, iSec;
 };
 
 /*
@@ -315,9 +316,9 @@ bool bDoCardSetup(ST_WORKDATA* pstWorkData, ST_BUFFERDATA* pstBufferData)
 	//2.创建套接字
 	pstWorkData->socketClient = socket(AF_INET, SOCK_STREAM, 0);
 	SOCKADDR_IN socketAddr;
-	socketAddr.sin_addr.S_un.S_addr = inet_addr("47.102.102.118"); //需要接收的IP地址
+	socketAddr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1"); //需要接收的IP地址"47.102.102.118"
 	socketAddr.sin_family = AF_INET;
-	socketAddr.sin_port = htons(9995);//端口号
+	socketAddr.sin_port = htons(8081);//端口号9995
 
 	//3.连接套接字
 	connect(pstWorkData->socketClient, (SOCKADDR*)&socketAddr, sizeof(SOCKADDR));
@@ -381,8 +382,14 @@ bool bWorkInit(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 			return false;
 		}
 	}
+	//获取开机时间
+	int iRunTime = GetTickCount();
 
-
+	pstWorkData->iSec = iRunTime / 1000;
+	pstWorkData->iH = pstWorkData->iSec / 3600;
+	pstWorkData->iM = pstWorkData->iSec / 60 % 60;
+	pstWorkData->iS = pstWorkData->iSec % 60;
+	printf("System run   : %02d:%02d:%02d\n", pstWorkData->iH, pstWorkData->iM, pstWorkData->iS);
 
 	if (!IQdemInitialize())
 
@@ -419,6 +426,9 @@ bool bWorkDo(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 	tm				*ltm = localtime(&now);
 	int				clktime = 30 * 1000;
 	clock_t			now_clk = clock();
+
+
+
 
 	// ----- M2i+M3i timestamps are 64 bit, M4i 128 bit -----
 	dwTimestampBytes = 0;
@@ -478,7 +488,7 @@ bool bWorkDo(void* pvWorkData, ST_BUFFERDATA* pstBufferData)
 	//输出所有location并且进行扰动定位
 	for (lIndex = 0; lIndex < col; lIndex++)
 	{
-		if (100 * var_value[lIndex]>threshold&&var_value[lIndex] > var_value[lIndex + 1] && var_value[lIndex] >= var_value[lIndex - 1] && location[lIndex] <= 2600 && location[lIndex] > 30)
+		if (pstWorkData->iSec > 300 && 100 * var_value[lIndex] > threshold&&var_value[lIndex] > var_value[lIndex + 1] && var_value[lIndex] >= var_value[lIndex - 1] && location[lIndex] <= 2600 && location[lIndex] > 30)
 		{
 			printf("\nFound disturbance: %9.2f m", location[lIndex]);//location[lIndex]
 			printf("\n*************************");
